@@ -1,8 +1,17 @@
 <script setup>
-  import {useMeStore} from "../stores/me.js"
-  const {name, title, tags, services, jobs, stacks, playlists, quickLinks, cats} = useMeStore()
+import { useMeStore } from "../stores/me.js";
+const {
+  name,
+  title,
+  tags,
+  services,
+  jobs,
+  stacks,
+  playlists,
+  quickLinks,
+  cats,
+} = useMeStore();
 </script>
-
 
 <template>
   <div>
@@ -24,16 +33,20 @@
                 </div>
                 <div class="d-flex flex-md-row align-center mx-4">
                   <div>
-                    <h1 class="text-primary">{{name}}</h1>
+                    <h1 class="text-primary">{{ name }}</h1>
                     <h3 class="text-grey my-4">
-                      {{title}}
+                      {{ title }}
                     </h3>
                     <div class="d-flex justify-space-between">
-                      <v-chip :color="tag.color" size="small" label class="mr-1"
+                      <v-chip
+                        :color="tag.color"
+                        size="small"
+                        label
+                        class="mr-1"
                         v-for="(tag, i) in tags"
                         :key="i"
                       >
-                        #{{tag.name}}
+                        #{{ tag.name }}
                       </v-chip>
                     </div>
                   </div>
@@ -120,7 +133,10 @@
                       <v-icon :icon="item.icon"></v-icon>
                     </template>
                     <v-list-item-title>{{ item.text }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ item.year.start }} {{ item.year.end }}</v-list-item-subtitle>
+                    <v-list-item-subtitle
+                      >{{ item.year.start }}
+                      {{ item.year.end }}</v-list-item-subtitle
+                    >
                     <v-list-item-subtitle>{{ item.desc }}</v-list-item-subtitle>
                   </v-list-item>
                 </v-list>
@@ -133,24 +149,27 @@
         <v-row>
           <v-col cols="12">
             <v-card>
-              <v-card-title > Upwork </v-card-title>
+              <v-card-title> Upwork </v-card-title>
               <v-card-text>
-                <div v-for="(item, i) in quickLinks" class="mb-3">
-                  <v-btn :color="item.color" :href="item.url" target="_blank" block
-                  :prepend-icon="item.icon"
+                <div v-for="(item, i) in quickLinks" class="mb-3" :key="i">
+                  <v-btn
+                    :color="item.color"
+                    :href="item.url"
+                    target="_blank"
+                    block
+                    :prepend-icon="item.icon"
                   >
-                    {{item.name}}</v-btn>
+                    {{ item.name }}</v-btn
+                  >
                 </div>
-              </v-card-text>  
+              </v-card-text>
             </v-card>
           </v-col>
           <v-col cols="12">
             <v-card>
               <v-card-title primary-title> Skill Sets </v-card-title>
               <v-card-text>
-                <v-chip-group
-                  column
-                >
+                <v-chip-group column>
                   <v-chip
                     v-for="(item, i) in stacks"
                     :key="i"
@@ -159,7 +178,7 @@
                     {{ item.name }}
                   </v-chip>
                 </v-chip-group>
-              </v-card-text>  
+              </v-card-text>
             </v-card>
           </v-col>
           <v-col cols="12">
@@ -173,24 +192,32 @@
                   hide-delimiters
                 >
                   <v-carousel-item
-                  v-for="(item, i) in cats"
-                  :key="i"
-                  cover
-                  :src="item.url"
+                    v-for="(item, i) in cats"
+                    :key="i"
+                    cover
+                    :src="item.url"
                   >
-                </v-carousel-item>
+                  </v-carousel-item>
                 </v-carousel>
-              </v-card-text>  
+              </v-card-text>
             </v-card>
           </v-col>
           <v-col cols="12" v-for="(item, i) in playlists" :key="i">
             <v-card>
-              <v-card-title primary-title> {{item.name}} </v-card-title>
+              <v-card-title primary-title> {{ item.name }} </v-card-title>
               <v-card-text>
-              <v-responsive :aspect-ratio="16/9">
-                <iframe width="100%" height="100%" class="ratio-inner" :src="item.link" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-              </v-responsive>
-            </v-card-text>
+                <v-responsive :aspect-ratio="16 / 9">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    class="ratio-inner"
+                    :src="item.link"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen=""
+                  ></iframe>
+                </v-responsive>
+              </v-card-text>
             </v-card>
           </v-col>
         </v-row>
@@ -198,4 +225,3 @@
     </v-row>
   </div>
 </template>
-

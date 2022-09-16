@@ -3,7 +3,7 @@
     <template v-slot:prepend>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     </template>
-    <v-app-bar-title>💮 Automate the Boring</v-app-bar-title>
+    <v-app-bar-title>{{ $route.meta.title }}</v-app-bar-title>
     <template v-slot:append>
       <v-btn
         icon
@@ -38,7 +38,18 @@ export default {
     drawer: false,
     items: [
       { title: "Home", value: "Home", to: "/", icon: "mdi-home" },
-      { title: "About", value: "About", to: "/about", icon: "mdi-information" },
+      {
+        title: "Support Request",
+        value: "Support",
+        to: "/support",
+        icon: "mdi-code-tags",
+      },
+      {
+        title: "Challenge Request",
+        value: "Challenge",
+        to: "/challenge",
+        icon: "mdi-image-filter-hdr",
+      },
     ],
     socialLinks: [
       {

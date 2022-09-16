@@ -9,10 +9,11 @@
     "preview": "vite preview --port 4173",
     "gas": "chmod +x ./gas.sh && ./gas.sh",
     "build-gas": "npm run build && npm run gas",
-    "deploy": "chmod +x ./gpDeploy.sh && ./gpDeploy.sh"
+    "deploy": "chmod +x ./gpDeploy.sh && ./gpDeploy.sh dist"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "axios": "^0.27.2",
     "pinia": "^2.0.21",
     "roboto-fontface": "*",
     "vue": "^3.2.38",
