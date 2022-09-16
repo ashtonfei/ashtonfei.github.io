@@ -8,7 +8,8 @@
     "dev": "vite",
     "preview": "vite preview --port 4173",
     "gas": "chmod +x ./gas.sh && ./gas.sh",
-    "build-gas": "npm run build && npm run gas"
+    "build-gas": "npm run build && npm run gas",
+    "deploy": "chmod +x ./gpDeploy.sh && ./gpDeploy.sh"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
