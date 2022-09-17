@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "serve": "vite preview",
-    "build": "vite build",
+    "build": "vite build && npm run cname",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "dev": "vite",
     "preview": "vite preview --port 4173",
     "gas": "chmod +x ./gas.sh && ./gas.sh",
     "build-gas": "npm run build && npm run gas",
-    "deploy": "chmod +x ./gpDeploy.sh && ./gpDeploy.sh dist"
+    "cname": "echo ashtonfei.com > ./docs/CNAME"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
