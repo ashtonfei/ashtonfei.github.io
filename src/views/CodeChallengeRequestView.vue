@@ -1,9 +1,18 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { Axios } from "axios";
+import colors from "vuetify/lib/util/colors";
 const loading = ref(false);
 const form = ref(null);
+const bgColor = ref(colors.deepPurple.lighten5);
 const formData = reactive({
+  title: {
+    value: "",
+    type: "text",
+    label: "Title",
+    hint: "What's the title of your chanllenge?",
+    rules: [(v) => !!v || "This is required"],
+  },
   name: {
     value: "",
     type: "text",
@@ -17,39 +26,28 @@ const formData = reactive({
     rules: [
       (v) => !!v || "This is required",
       (v) =>
+        // eslint-disable-next-line no-useless-escape
         /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || "Must be a valid email",
     ],
   },
-  service: {
-    value: "Google Apps Script",
-    label: "Select a Service",
+  topics: {
+    value: ["Apps Script"],
+    label: "Select Topics",
+    hint: "Enter your own if not in the list",
+    multiple: true,
     items: [
-      "Google Apps Script",
-      "Google Workspace Apps",
+      "Apps Script",
+      "Workspace Apps",
       "Web App",
       "API Integration",
+      "Custom Functions",
     ],
-  },
-  budget: {
-    value: 50,
-    type: "number",
-    label: "Budget",
-    min: 50,
-    max: 5000,
-    step: 1,
-    rules: [(v) => !!v || "This is required"],
-  },
-  dueDate: {
-    value: "",
-    type: "date",
-    label: "Due Date",
-    rules: [(v) => !!v || "This is required"],
   },
   description: {
     value: "",
     type: "textarea",
     label: "Description",
-    placeholder: "Describe your request or project here",
+    placeholder: "Describe your code challenge here here",
     rules: [(v) => !!v || "This is required"],
   },
   links: {
@@ -94,55 +92,34 @@ const submit = async () => {
               <v-row>
                 <v-col cols="12" sm="12" md="6">
                   <v-text-field
-                    v-model.trim="formData.name.value"
-                    :label="formData.name.label"
-                    :type="formData.name.type"
-                    :rules="formData.name.rules"
+                    v-model.trim="formData.title.value"
+                    :label="formData.title.label"
+                    :hint="formData.title.hint"
+                    :type="formData.title.type"
+                    :rules="formData.title.rules"
+                    :bg-color="bgColor"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="12" md="6">
-                  <v-text-field
-                    v-model.trim="formData.email.value"
-                    :label="formData.email.label"
-                    :type="formData.email.type"
-                    :rules="formData.email.rules"
-                  ></v-text-field>
+                  <v-combobox
+                    v-model="formData.topics.value"
+                    :label="formData.topics.label"
+                    :rules="formData.topics.rules"
+                    :items="formData.topics.items"
+                    :multiple="formData.topics.multiple"
+                    :hint="formData.topics.hint"
+                    :bg-color="bgColor"
+                  ></v-combobox>
                 </v-col>
-                <v-col cols="12" sm="12" md="4">
-                  <v-autocomplete
-                    v-model.trim="formData.service.value"
-                    :label="formData.service.label"
-                    :rules="formData.service.rules"
-                    :items="formData.service.items"
-                    chips
-                  ></v-autocomplete>
-                </v-col>
-                <v-col cols="12" sm="12" md="4">
-                  <v-text-field
-                    v-model.number="formData.budget.value"
-                    :label="formData.budget.label"
-                    :type="formData.budget.type"
-                    :min="formData.budget.min"
-                    :max="formData.budget.max"
-                    :step="formData.budget.step"
-                    :rules="formData.budget.rules"
-                    prefix="$"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="12" md="4">
-                  <v-text-field
-                    v-model="formData.dueDate.value"
-                    :label="formData.dueDate.label"
-                    :type="formData.dueDate.type"
-                    :rules="formData.dueDate.rules"
-                  ></v-text-field>
-                </v-col>
+              </v-row>
+              <v-row>
                 <v-col cols="12" sm="12" md="6">
                   <v-textarea
                     v-model="formData.description.value"
                     :label="formData.description.label"
                     :placeholder="formData.description.placeholder"
                     :rules="formData.description.rules"
+                    :bg-color="bgColor"
                     rows="8"
                     no-resize
                   ></v-textarea>
@@ -153,11 +130,33 @@ const submit = async () => {
                     :label="formData.links.label"
                     :placeholder="formData.links.placeholder"
                     :rules="formData.links.rules"
+                    :bg-color="bgColor"
                     rows="8"
                     no-resize
                   ></v-textarea>
                 </v-col>
-
+              </v-row>
+              <v-row>
+                <v-col cols="12" sm="12" md="6">
+                  <v-text-field
+                    v-model.trim="formData.name.value"
+                    :label="formData.name.label"
+                    :type="formData.name.type"
+                    :rules="formData.name.rules"
+                    :bg-color="bgColor"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="12" md="6">
+                  <v-text-field
+                    v-model.trim="formData.email.value"
+                    :label="formData.email.label"
+                    :type="formData.email.type"
+                    :rules="formData.email.rules"
+                    :bg-color="bgColor"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
                 <v-col cols="12">
                   <v-btn
                     color="primary"

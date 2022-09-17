@@ -1,8 +1,10 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { Axios } from "axios";
+import colors from "vuetify/lib/util/colors";
 const loading = ref(false);
 const form = ref(null);
+const bgColor = ref(colors.deepPurple.lighten5);
 const formData = reactive({
   name: {
     value: "",
@@ -17,6 +19,7 @@ const formData = reactive({
     rules: [
       (v) => !!v || "This is required",
       (v) =>
+        // eslint-disable-next-line no-useless-escape
         /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v) || "Must be a valid email",
     ],
   },
@@ -98,6 +101,7 @@ const submit = async () => {
                     :label="formData.name.label"
                     :type="formData.name.type"
                     :rules="formData.name.rules"
+                    :bg-color="bgColor"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="12" md="6">
@@ -106,6 +110,7 @@ const submit = async () => {
                     :label="formData.email.label"
                     :type="formData.email.type"
                     :rules="formData.email.rules"
+                    :bg-color="bgColor"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="12" md="4">
@@ -114,7 +119,7 @@ const submit = async () => {
                     :label="formData.service.label"
                     :rules="formData.service.rules"
                     :items="formData.service.items"
-                    chips
+                    :bg-color="bgColor"
                   ></v-autocomplete>
                 </v-col>
                 <v-col cols="12" sm="12" md="4">
@@ -126,6 +131,7 @@ const submit = async () => {
                     :max="formData.budget.max"
                     :step="formData.budget.step"
                     :rules="formData.budget.rules"
+                    :bg-color="bgColor"
                     prefix="$"
                   ></v-text-field>
                 </v-col>
@@ -135,6 +141,7 @@ const submit = async () => {
                     :label="formData.dueDate.label"
                     :type="formData.dueDate.type"
                     :rules="formData.dueDate.rules"
+                    :bg-color="bgColor"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="12" md="6">
@@ -143,6 +150,7 @@ const submit = async () => {
                     :label="formData.description.label"
                     :placeholder="formData.description.placeholder"
                     :rules="formData.description.rules"
+                    :bg-color="bgColor"
                     rows="8"
                     no-resize
                   ></v-textarea>
@@ -153,11 +161,13 @@ const submit = async () => {
                     :label="formData.links.label"
                     :placeholder="formData.links.placeholder"
                     :rules="formData.links.rules"
+                    :bg-color="bgColor"
                     rows="8"
                     no-resize
                   ></v-textarea>
                 </v-col>
-
+              </v-row>
+              <v-row>
                 <v-col cols="12">
                   <v-btn
                     color="primary"
