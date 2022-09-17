@@ -2,9 +2,9 @@
 echo -e "\n### GAS: Build for Google Apps Script ###\n"
 
 GAS_DIR="./gas"
-DIST_DIR="./dist"
+DIST_DIR="./docs"
 
-# Check if the ./dist folder created
+# Check if the ./docs folder created
 if [ ! -d $DIST_DIR ]
 then
     echo -e "\n### GAS: You Need to Build the Project First! ###\n"
@@ -17,22 +17,22 @@ then
     mkdir $GAS_DIR
 fi
 
-# Copy ./dist/index.html to ./gas/index.html
+# Copy ./docs/index.html to ./gas/index.html
 
-cat dist/index.html| sed -E "s/<script.+script>/<?!= includes(\"js.html\"); ?>/" | sed -E "s/<link rel=\"stylesheet\".+>/<?!= includes(\"css.html\"); ?>/"  > ./gas/index.html
+cat ./docs/index.html| sed -E "s/<script.+script>/<?!= includes(\"js.html\"); ?>/" | sed -E "s/<link rel=\"stylesheet\".+>/<?!= includes(\"css.html\"); ?>/"  > ./gas/index.html
 
 echo -e "### GAS: Index.html Created! ###"
 
-# Copy ./dist/assets/index.*.js ./gas/javascript.html
+# Copy ./docs/assets/index.*.js ./gas/javascript.html
 echo "<script type=\"module\" crossorigin>" > ./gas/js.html
-cat ./dist/assets/index.*.js >> ./gas/js.html
+cat ./docs/assets/index.*.js >> ./gas/js.html
 echo "</script>" >> ./gas/js.html
 echo -e "### GAS: js.html Created! ###"
 
 
-# Copy ./dist/assets/index.*.css ./gas/css.html
+# Copy ./docs/assets/index.*.css ./gas/css.html
 echo "<style>" > ./gas/css.html
-cat ./dist/assets/index.*.css >> ./gas/css.html
+cat ./docs/assets/index.*.css >> ./gas/css.html
 echo "</style>" >> ./gas/css.html
 echo -e "### GAS: css.html Created! ###"
 

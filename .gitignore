@@ -27,3 +27,5 @@ coverage
 *.sln
 *.sw?
 /gas
+dist
+node_modules
