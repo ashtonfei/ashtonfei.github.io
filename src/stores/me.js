@@ -208,6 +208,39 @@ export const useMeStore = defineStore("me", () => {
     },
   ]);
 
+  const certificates = ref([
+    {
+      image:
+        "https://user-images.githubusercontent.com/16481229/190842903-66f4d455-8a82-4462-936c-5a9b95c65f11.png",
+      url: "https://www.freecodecamp.org/certification/ashtonfei/javascript-algorithms-and-data-structures",
+      name: "JavaScript Algorithms and Data Structures",
+    },
+    {
+      image:
+        "https://user-images.githubusercontent.com/16481229/190842963-119217f9-0c31-4904-b8fc-8acc7435a97e.png",
+      url: "https://www.freecodecamp.org/certification/ashtonfei/front-end-development-libraries",
+      name: "Front End Development Libraries",
+    },
+    {
+      image:
+        "https://user-images.githubusercontent.com/16481229/190843009-80ebab83-c48a-473a-9300-1ca0ac1715ff.png",
+      url: "https://www.freecodecamp.org/certification/ashtonfei/back-end-development-and-apis",
+      name: "Back End Development and APIs",
+    },
+    {
+      image:
+        "https://user-images.githubusercontent.com/16481229/190843112-05b46294-4cc3-4f78-bee1-74f2d830d0d4.png",
+      url: "https://www.freecodecamp.org/certification/ashtonfei/relational-database-v8",
+      name: "Relational Database",
+    },
+    {
+      image:
+        "https://user-images.githubusercontent.com/16481229/190843066-debf2103-66ff-4aec-8c5f-1d542d8ba7fe.png",
+      url: "https://www.freecodecamp.org/certification/ashtonfei/data-analysis-with-python-v7",
+      name: "Data Analysis with Python",
+    },
+  ]);
+
   return {
     name,
     title,
@@ -218,5 +251,6 @@ export const useMeStore = defineStore("me", () => {
     playlists,
     quickLinks,
     cats,
+    certificates,
   };
 });

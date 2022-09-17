@@ -10,6 +10,7 @@ const {
   playlists,
   quickLinks,
   cats,
+  certificates,
 } = useMeStore();
 </script>
 
@@ -143,6 +144,32 @@ const {
               </v-card-text>
             </v-card>
           </v-col>
+          <v-col cols="12">
+            <v-card>
+              <v-card-title primary-title> Certificates </v-card-title>
+              <v-card-text>
+                <v-responsive :aspect-ratio="4 / 3">
+                  <v-carousel
+                    cycle
+                    hide-delimiter-background
+                    show-arrows="hover"
+                    hide-delimiters
+                    height="auto"
+                  >
+                    <v-carousel-item
+                      v-for="(item, i) in certificates"
+                      :key="i"
+                      cover
+                      :src="item.image"
+                      :href="item.url"
+                      target="_blank"
+                    >
+                    </v-carousel-item>
+                  </v-carousel>
+                </v-responsive>
+              </v-card-text>
+            </v-card>
+          </v-col>
         </v-row>
       </v-col>
       <v-col cols="12" md="4">
@@ -185,20 +212,23 @@ const {
             <v-card>
               <v-card-title primary-title> 😸 Cat Friends 😸 </v-card-title>
               <v-card-text>
-                <v-carousel
-                  cycle
-                  hide-delimiter-background
-                  show-arrows="hover"
-                  hide-delimiters
-                >
-                  <v-carousel-item
-                    v-for="(item, i) in cats"
-                    :key="i"
-                    cover
-                    :src="item.url"
+                <v-responsive :aspect-ratio="1 / 1">
+                  <v-carousel
+                    cycle
+                    hide-delimiter-background
+                    show-arrows="hover"
+                    hide-delimiters
+                    height="auto"
                   >
-                  </v-carousel-item>
-                </v-carousel>
+                    <v-carousel-item
+                      v-for="(item, i) in cats"
+                      :key="i"
+                      cover
+                      :src="item.url"
+                    >
+                    </v-carousel-item>
+                  </v-carousel>
+                </v-responsive>
               </v-card-text>
             </v-card>
           </v-col>
