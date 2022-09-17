@@ -133,10 +133,10 @@ const {
                       <v-icon :icon="item.icon"></v-icon>
                     </template>
                     <v-list-item-title>{{ item.text }}</v-list-item-title>
-                    <v-list-item-subtitle
-                      >{{ item.year.start }}
-                      {{ item.year.end }}</v-list-item-subtitle
-                    >
+                    <v-list-item-subtitle>
+                      {{ item.year.start }} to
+                      {{ item.year.end }}
+                    </v-list-item-subtitle>
                     <v-list-item-subtitle>{{ item.desc }}</v-list-item-subtitle>
                   </v-list-item>
                 </v-list>
@@ -149,7 +149,7 @@ const {
         <v-row>
           <v-col cols="12">
             <v-card>
-              <v-card-title> Upwork </v-card-title>
+              <v-card-title> Work with Me </v-card-title>
               <v-card-text>
                 <div v-for="(item, i) in quickLinks" class="mb-3" :key="i">
                   <v-btn
