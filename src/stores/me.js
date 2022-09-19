@@ -167,6 +167,22 @@ export const useMeStore = defineStore("me", () => {
 
   const cats = ref([
     {
+      url: "https://user-images.githubusercontent.com/16481229/191058561-c776ecf0-0dd1-4ebe-a1d4-df3fe798bb1f.jpg",
+      alt: "xiaomi",
+    },
+    {
+      url: "https://user-images.githubusercontent.com/16481229/191058790-41a21ff9-d98d-4020-84c3-78e363ff23c2.jpg",
+      alt: "xiaomi",
+    },
+    {
+      url: "https://user-images.githubusercontent.com/16481229/191058947-9388aa4f-aa8d-4327-9e54-1d2c710a548d.jpg",
+      alt: "xiaohui-rip",
+    },
+    {
+      url: "https://user-images.githubusercontent.com/16481229/191059113-b7857e1b-6786-4d74-89b6-f12e28b694a2.jpg",
+      alt: "xiaohui-and-dami",
+    },
+    {
       url: "https://user-images.githubusercontent.com/16481229/190663668-c439c296-5051-432c-869b-9e29c57d1730.jpg",
       alt: "cat1",
     },

@@ -21,7 +21,12 @@ const {
         <v-card>
           <v-card-text>
             <v-row>
-              <v-col cols="12" sm="12" md="3" class="d-flex align-center">
+              <v-col
+                cols="12"
+                sm="12"
+                md="3"
+                class="d-flex align-center flex-column flex-md-row"
+              >
                 <div>
                   <v-img
                     src="https://user-images.githubusercontent.com/16481229/190216220-7f9963cf-1dde-4402-9946-f9f3ac32bb6d.png"
@@ -32,8 +37,8 @@ const {
                     class="rounded-circle"
                   ></v-img>
                 </div>
-                <div class="d-flex flex-md-row align-center mx-4">
-                  <div>
+                <div class="d-flex flex-md-row align-center mx-4 mt-5 mt-md-0">
+                  <div class="text-center text-md-left">
                     <h1 class="text-primary">{{ name }}</h1>
                     <h3 class="text-grey my-4">
                       {{ title }}
@@ -43,8 +48,8 @@ const {
                         :color="tag.color"
                         size="small"
                         label
-                        class="mr-1"
                         v-for="(tag, i) in tags"
+                        :class="i > 0 || i < tags.length ? 'mx-1' : ''"
                         :key="i"
                       >
                         #{{ tag.name }}
