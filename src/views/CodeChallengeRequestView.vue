@@ -4,7 +4,7 @@ import { Axios } from "axios";
 import colors from "vuetify/lib/util/colors";
 const loading = ref(false);
 const form = ref(null);
-const bgColor = ref(colors.grey.lighten4);
+const bgColor = null//ref(colors.grey.lighten4);
 const formData = reactive({
   title: {
     value: "",

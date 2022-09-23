@@ -16,9 +16,5 @@
   </v-footer>
 </template>
 
-<script>
-export default {
-  name: "MyFooter",
-  data: () => ({}),
-};
+<script setup>
 </script>

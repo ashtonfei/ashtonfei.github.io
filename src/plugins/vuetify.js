@@ -9,18 +9,24 @@ const light = {
 	dark: false,
 	colors: {
 		background: "#FEFEFE",
-		surface: "#FEFEFE",
-		primary: "#5384ED",
+		surface: "#FAFAFA",
+		primary: "#2685FD",
 		secondary: "#03DAC6",
-		error: "#D85040",
+		error: "#EA4235",
 		info: "#2196F3",
-		success: "#34A853",
-		warning: "#F1BF42",
+		success: "#00AC48",
+		warning: "#FFB900",
 	}
 }
 
 const dark = {
 	dark: true,
+	colors: {
+		...light.colors,
+		background: "#323232",
+		surface: "#181818",
+		primary: "#3266CB",
+	}
 }
 
 const options = {

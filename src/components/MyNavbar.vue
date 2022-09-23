@@ -28,15 +28,33 @@
         :to="item.to"
       ></v-list-item>
     </v-list>
+	<template v-slot:append>
+		<v-list density="compact" nav>
+		  <v-list-item
+			value="theme"
+			color="primary"
+			@click="toggleTheme"
+		  ></v-list-item>
+		  <v-list-item
+		  >
+				<v-btn 
+					:prepend-icon="theme.global.current.value.dark ? 'mdi-brightness-6' : 'mdi-brightness-2'"
+					block color="primary" @click="toggleTheme">
+			{{ theme.global.current.value.dark ? 'Light' : 'Dark'}}
+				</v-btn>
+			</v-list-item>
+		</v-list>
+	</template>
   </v-navigation-drawer>
 </template>
 
-<script>
-export default {
-  name: "MyNavbar",
-  data: () => ({
-    drawer: false,
-    items: [
+<script setup>
+
+import { useTheme } from 'vuetify';
+import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue';
+const themeBot = ref(null);
+const drawer = ref(false);
+const items = ref([
       { title: "Home", value: "Home", to: "/", icon: "mdi-home" },
       {
         title: "Support Request",
@@ -50,8 +68,9 @@ export default {
         to: "/challenge",
         icon: "mdi-image-filter-hdr",
       },
-    ],
-    socialLinks: [
+    ]);
+
+const socialLinks = ref([
       {
         url: "https://twitter.com/ashton_fei",
         icon: "mdi-twitter",
@@ -67,7 +86,23 @@ export default {
         icon: "mdi-instagram",
         color: "white",
       },
-    ],
-  }),
-};
+]);
+
+const theme = useTheme();
+const toggleTheme = () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
+
+const updateThemeByCurrentTime = () => {
+	const hours = new Date().getHours()
+	theme.global.name.value = hours >= 18 ? 'dark' : 'light'
+	console.log('theme checked')
+}
+
+onBeforeMount(() => updateThemeByCurrentTime());
+
+onMounted(() => {
+	themeBot.value = setInterval(() => updateThemeByCurrentTime, 1000 * 60);
+})
+
+onUnmounted(() => themeBot.value && clearInterval(themeBot.value));
+
 </script>
