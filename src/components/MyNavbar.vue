@@ -94,7 +94,6 @@ const toggleTheme = () => theme.global.name.value = theme.global.current.value.d
 const updateThemeByCurrentTime = () => {
 	const hours = new Date().getHours()
 	theme.global.name.value = hours >= 18 ? 'dark' : 'light'
-	console.log('theme checked')
 }
 
 onBeforeMount(() => updateThemeByCurrentTime());
