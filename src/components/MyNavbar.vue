@@ -51,8 +51,7 @@
 <script setup>
 
 import { useTheme } from 'vuetify';
-import { ref, onBeforeMount, onMounted, onUnmounted } from 'vue';
-const themeBot = ref(null);
+import { ref, onBeforeMount } from 'vue';
 const drawer = ref(false);
 const items = ref([
       { title: "Home", value: "Home", to: "/", icon: "mdi-home" },
@@ -93,15 +92,9 @@ const toggleTheme = () => theme.global.name.value = theme.global.current.value.d
 
 const updateThemeByCurrentTime = () => {
 	const hours = new Date().getHours()
-	theme.global.name.value = hours >= 18 ? 'dark' : 'light'
+	theme.global.name.value = hours >= 18 || hours < 6 ? 'dark' : 'light'
 }
 
 onBeforeMount(() => updateThemeByCurrentTime());
-
-onMounted(() => {
-	themeBot.value = setInterval(() => updateThemeByCurrentTime, 1000 * 60);
-})
-
-onUnmounted(() => themeBot.value && clearInterval(themeBot.value));
 
 </script>
