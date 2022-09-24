@@ -29,3 +29,4 @@ coverage
 /gas
 dist
 node_modules
+.DS_Store
