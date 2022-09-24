@@ -4,18 +4,29 @@
 			<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 		</template>
 		<v-app-bar-title>{{ $route.meta.title }}</v-app-bar-title>
-		<template v-slot:append>
-			<v-btn
-				icon
-				:color="item.color"
-				v-for="(item, i) in socialLinks"
-				:key="i"
-				:href="item.url"
-				target="_blank"
-			>
-				<v-icon>{{ item.icon }}</v-icon>
-			</v-btn>
-		</template>
+		<!-- <Teleport to="#v-app"> -->
+		<!-- 	<v-progress-linear -->
+		<!-- 		:active="true" -->
+		<!-- 		:indeterminate="true" -->
+		<!-- 			style="width: 100%" -->
+		<!-- 		:height="6" -->
+		<!-- 		absolute -->
+		<!-- 		bottom -->
+		<!-- 		color="error" -->
+		<!-- 	></v-progress-linear -->
+		<!-- 	><template v-slot:append> -->
+		<!-- 		<v-btn -->
+		<!-- 			icon -->
+		<!-- 			:color="item.color" -->
+		<!-- 			v-for="(item, i) in socialLinks" -->
+		<!-- 			:key="i" -->
+		<!-- 			:href="item.url" -->
+		<!-- 			target="_blank" -->
+		<!-- 		> -->
+		<!-- 			<v-icon>{{ item.icon }}</v-icon> -->
+		<!-- 		</v-btn> -->
+		<!-- 	</template> -->
+		<!-- </Teleport> -->
 	</v-app-bar>
 	<v-navigation-drawer v-model="drawer" bottom temporary>
 		<v-list density="compact" nav>
@@ -57,6 +68,9 @@
 <script setup>
 import { useTheme } from "vuetify";
 import { ref, onBeforeMount } from "vue";
+import { useAppStore } from "../stores/app.js";
+
+const { loading } = useAppStore();
 const drawer = ref(false);
 const items = ref([
 	{ title: "Home", value: "Home", to: "/", icon: "mdi-home" },
