@@ -9,5 +9,5 @@ echo Deploying app to server ...
 
 # scp -ri $PRIVATE_KEY ./dist/* $USER_NAME@$PUBLIC_IP:/var/www/$DOMAIN/
 npm run build
-echo $DOMAIN > ./dist/CNAME
+echo $DOMAIN > ./docs/CNAME
 echo Deployed
