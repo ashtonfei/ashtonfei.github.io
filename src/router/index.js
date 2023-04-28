@@ -1,39 +1,84 @@
+// Composables
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import CodeSupportRequestView from "../views/CodeSupportRequestView.vue";
-import CodeChallengeRequestView from "../views/CodeChallengeRequestView.vue";
+
+const routes = [
+  {
+    path: "/",
+    component: import("@/layouts/default/Default.vue"),
+    children: [
+      {
+        path: "",
+        name: "Home",
+        meta: {
+          title: "Automate the Boring",
+          icon: "mdi-home",
+        },
+        component: import("@/views/Home.vue"),
+      },
+    ],
+  },
+  {
+    path: "/forms",
+    component: import("@/layouts/default/Default.vue"),
+    children: [
+      {
+        path: "request/:id",
+        name: "Status",
+        meta: {
+          title: "Request Status",
+          icon: "mdi-script",
+        },
+        component: import("@/views/forms/Status.vue"),
+      },
+      {
+        path: "request",
+        name: "SupportRequest",
+        meta: {
+          title: "Support Request",
+          icon: "mdi-script",
+        },
+        component: import("@/views/forms/Request.vue"),
+      },
+    ],
+  },
+  {
+    path: "/chalkline",
+    component: import("@/layouts/default/Default.vue"),
+    children: [
+      {
+        path: "",
+        name: "chalkline",
+        meta: {
+          title: "Chalkline",
+          icon: "mdi-puzzle",
+        },
+        component: import("@/views/chalkline/Home.vue"),
+      },
+      {
+        path: "privacy-policy",
+        name: "chalklinePrivacyPolicy",
+        meta: {
+          title: "Privacy Policy | Chalkline",
+          icon: "mdi-account-multiple",
+        },
+        component: import("@/views/chalkline/PrivacyPolicy.vue"),
+      },
+      {
+        path: "terms-of-service",
+        name: "chalklineTermsOfService",
+        meta: {
+          title: "Terms of Service | Chalkline",
+          icon: "mdi-file-document",
+        },
+        component: import("@/views/chalkline/TermsOfService.vue"),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: HomeView,
-      meta: {
-        title: "💮 Automate the Boring",
-        icon: "mdi-home",
-      },
-    },
-    {
-      path: "/support",
-      name: "support",
-      component: CodeSupportRequestView,
-      meta: {
-        title: "Code Support Request",
-        icon: "mdi-code-tags",
-      },
-    },
-    {
-      path: "/challenge",
-      name: "challenge",
-      component: CodeChallengeRequestView,
-      meta: {
-        title: "Code Challenge Request",
-        icon: "mdi-info",
-      },
-    },
-  ],
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
 });
 
 export default router;

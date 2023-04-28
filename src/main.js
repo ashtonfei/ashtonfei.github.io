@@ -1,11 +1,20 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import vuetify from "./plugins/vuetify";
-import { loadFonts } from "./plugins/webfontloader";
+/**
+ * main.js
+ *
+ * Bootstraps Vuetify and other plugins then mounts the App`
+ */
 
-import { createPinia } from "pinia";
+// Components
+import App from './App.vue'
 
-loadFonts();
+// Composables
+import { createApp } from 'vue'
 
-createApp(App).use(router).use(createPinia()).use(vuetify).mount("#app");
+// Plugins
+import { registerPlugins } from '@/plugins'
+
+const app = createApp(App)
+
+registerPlugins(app)
+
+app.mount('#app')

@@ -1,20 +1,19 @@
 <template>
-	<v-footer app class="pa-0">
-		<v-card
-			elevation="0"
-			rounded="0"
-			width="100%"
-			class="bg-primary text-center"
-		>
-			<v-card-text class="text-white py-1">
-				<small>Automate the Boring</small>
-			</v-card-text>
-			<v-card-text class="text-white py-1">
-				{{ new Date().getFullYear() }} &copy;
-				<strong>Ashton Fei</strong>
-			</v-card-text>
-		</v-card>
-	</v-footer>
+  <v-footer app color="grey-lighten-5 text-caption">
+    <v-row>
+      <v-col cols="12"> All rights reserved. Ashton Fei {{ year }} </v-col>
+    </v-row>
+  </v-footer>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  name: "MyFooter",
+  data: () => ({}),
+  computed: {
+    year: function () {
+      return new Date().getFullYear();
+    },
+  },
+};
+</script>
