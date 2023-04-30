@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   {
     path: "/",
-    component: import("@/layouts/default/Default.vue"),
+    component: () => import("@/layouts/default/Default.vue"),
     children: [
       {
         path: "",
@@ -13,13 +13,13 @@ const routes = [
           title: "Automate the Boring",
           icon: "mdi-home",
         },
-        component: import("@/views/Home.vue"),
+        component: () => import("@/views/Home.vue"),
       },
     ],
   },
   {
     path: "/forms",
-    component: import("@/layouts/default/Default.vue"),
+    component: () => import("@/layouts/default/Default.vue"),
     children: [
       {
         path: "request/:id",
@@ -28,7 +28,7 @@ const routes = [
           title: "Request Status",
           icon: "mdi-script",
         },
-        component: import("@/views/forms/Status.vue"),
+        component: () => import("@/views/forms/Status.vue"),
       },
       {
         path: "request",
@@ -37,13 +37,13 @@ const routes = [
           title: "Support Request",
           icon: "mdi-script",
         },
-        component: import("@/views/forms/Request.vue"),
+        component: () => import("@/views/forms/Request.vue"),
       },
     ],
   },
   {
     path: "/chalkline",
-    component: import("@/layouts/default/Default.vue"),
+    component: () => import("@/layouts/default/Default.vue"),
     children: [
       {
         path: "",
@@ -52,7 +52,7 @@ const routes = [
           title: "Chalkline",
           icon: "mdi-puzzle",
         },
-        component: import("@/views/chalkline/Home.vue"),
+        component: () => import("@/views/chalkline/Home.vue"),
       },
       {
         path: "privacy-policy",
@@ -61,7 +61,7 @@ const routes = [
           title: "Privacy Policy | Chalkline",
           icon: "mdi-account-multiple",
         },
-        component: import("@/views/chalkline/PrivacyPolicy.vue"),
+        component: () => import("@/views/chalkline/PrivacyPolicy.vue"),
       },
       {
         path: "terms-of-service",
@@ -70,7 +70,7 @@ const routes = [
           title: "Terms of Service | Chalkline",
           icon: "mdi-file-document",
         },
-        component: import("@/views/chalkline/TermsOfService.vue"),
+        component: () => import("@/views/chalkline/TermsOfService.vue"),
       },
     ],
   },
